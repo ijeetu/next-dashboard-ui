@@ -22,7 +22,7 @@ const data = [
         name: 'Boys',
         count: 50,
         
-        fill: '#CEFBFA',
+        fill: '#c3ebfa',
     },
 
 ];
