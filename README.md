@@ -1,4 +1,4 @@
-# Lama Dev School Management Dashboard
+# Outliers School Management Dashboard
 
 ## Getting Started
 
