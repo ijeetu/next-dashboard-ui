@@ -10,11 +10,11 @@ const Navbar = () => {
 {/* ICON & USER */}
 
 <div className="flex items-center gap-6 justify-end">
-  <div className="bg-white rounded-full w-7 h-7 flex items-center justify-center cursor-pointer">
-    <Image src="/message.png" alt="user" width={40} height={40} />
+  <div className=" rounded-full w-7 h-7 flex items-center justify-center cursor-pointer">
+    <Image src="/messages.svg" alt="user" width={40} height={40} />
   </div>
-  <div className="bg-white rounded-full w-7 h-7 flex items-center justify-center cursor-pointer relative">
-    <Image src="/announcement.png" alt="annancement" width={40} height={40} />
+  <div className=" rounded-full w-7 h-7 flex items-center justify-center cursor-pointer relative">
+    <Image src="/mic-vocal.svg" alt="annancement" width={40} height={40} />
     <div className="w-5 h-5 bg-purple-500 rounded-full text-xs flex items-center justify-center absolute -top-3 -right-3 text-white">1</div>
   </div>
   <div className="flex flex-col">

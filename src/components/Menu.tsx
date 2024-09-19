@@ -1,90 +1,91 @@
 import Link from "next/link";
 import Image from "next/image";
+import { role } from "@/lib/data";
 
 const menuItems = [
   {
     title: "MENU",
     items: [
       {
-        icon: "/home.png",
+        icon: "/home.svg",
         label: "Home",
         href: "/",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/teacher.png",
+        icon: "/teacher.svg",
         label: "Teachers",
         href: "/list/teachers",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/student.png",
+        icon: "/student.svg",
         label: "Students",
         href: "/list/students",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/parent.png",
+        icon: "/parent.svg",
         label: "Parents",
         href: "/list/parents",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/subject.png",
+        icon: "/subject.svg",
         label: "Subjects",
         href: "/list/subjects",
         visible: ["admin"],
       },
       {
-        icon: "/class.png",
+        icon: "/class.svg",
         label: "Classes",
         href: "/list/classes",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/lesson.png",
+        icon: "/lesson.svg",
         label: "Lessons",
         href: "/list/lessons",
         visible: ["admin", "teacher"],
       },
       {
-        icon: "/exam.png",
+        icon: "/exam.svg",
         label: "Exams",
         href: "/list/exams",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/assignment.png",
+        icon: "/assignment.svg",
         label: "Assignments",
         href: "/list/assignments",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/result.png",
+        icon: "/result.svg",
         label: "Results",
         href: "/list/results",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/attendance.png",
+        icon: "/attendance.svg",
         label: "Attendance",
         href: "/list/attendance",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/calendar.png",
+        icon: "/calendar.svg",
         label: "Events",
         href: "/list/events",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/message.png",
+        icon: "/message.svg",
         label: "Messages",
         href: "/list/messages",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/announcement.png",
+        icon: "/announcement.svg",
         label: "Announcements",
         href: "/list/announcements",
         visible: ["admin", "teacher", "student", "parent"],
@@ -95,19 +96,19 @@ const menuItems = [
     title: "OTHER",
     items: [
       {
-        icon: "/profile.png",
+        icon: "/user.svg",
         label: "Profile",
         href: "/profile",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/setting.png",
+        icon: "/settings.svg",
         label: "Settings",
         href: "/settings",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
-        icon: "/logout.png",
+        icon: "/log-out.svg",
         label: "Logout",
         href: "/logout",
         visible: ["admin", "teacher", "student", "parent"],
@@ -119,17 +120,21 @@ const menuItems = [
 const Menu = () => {
   return (
     <div className='p-4'>
-      {menuItems.map(i=>(
+      {menuItems.map(i=> (
+        
+      
         <div className='flex flex-col gap-2' key={i.title}>
           <span className='hidden lg:block text-gray-400 font-light my-4'>{i.title}</span>
-          {i.items.map(item=>(
-            <Link href={item.href} key={item.label} className="flex items-center justify-center lg:justify-start gap-4">
-            <Image src={item.icon} alt="icon" width={20} height={20} />
-            <span className='text-sm hidden lg:block'>{item.label}</span>
-            </Link>
-          
-          ))}
-          </div>
+          {i.items.map(item=> { 
+            if (item.visible.includes(role)) {
+              
+              return (<Link href={item.href} key={item.label} className="flex items-center justify-center lg:justify-start gap-4">
+                <Image src={item.icon} alt="icon" width={20} height={20} />
+                <span className='text-sm hidden lg:block'>{item.label}</span>
+                </Link> )
+            }
+          })}
+        </div>
       ))}
     </div>
   )
