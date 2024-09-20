@@ -13,13 +13,13 @@ const TeacherList = () => {
           <TableSearch />
           <div className="flex items-center gap-4 self-end">
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-outSky text-white" >
-              <Image src="/filter.png" alt="search" width={14} height={14} />
+              <Image src="/filter.svg" alt="search" width={14} height={14} />
             </button>
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-outSky text-white" >
-              <Image src="/sort.png" alt="search" width={14} height={14} />
+              <Image src="/sort.svg" alt="search" width={14} height={14} />
             </button>
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-outSky text-white" >
-              <Image src="/plus.png" alt="search" width={14} height={14} />
+              <Image src="/plus.svg" alt="search" width={14} height={14} />
             </button>
           </div>
         </div>
