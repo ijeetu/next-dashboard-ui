@@ -2,11 +2,26 @@ import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 
+import Link from "next/link";
+
 import Image from "next/image";
+import { role, teachersData } from "@/lib/data";
+
+type Teacher = {
+  id: number;
+  teacherId: string;
+  name: string;
+  email?: string; // Optional email field
+  photo: string;
+  phone: string;
+  subjects: string[]; // Array of strings
+  classes: string[]; // Array of strings
+  address: string;
+};
 
 const columns = [
   {
-    header: "info",
+    header: "Info",
     accessor: "info",
   },
   {
@@ -16,7 +31,7 @@ const columns = [
   },
   {
     header: "Classes",
-    accessor: " classes",
+    accessor: "classes",
     className: "hidden md:table-cell",
   },
   {
@@ -36,6 +51,41 @@ const columns = [
 ];
 
 const TeacherList = () => {
+  const renderRow = (item: Teacher) => (
+    <tr key={item.id} className="hover:bg-outPurpleLight border-b border-gray-200 even:bg-slate-50 text-sm">
+      <td className="flex items-center gap-4 p-4">
+        <Image
+          src={item.photo}
+          alt="photo"
+          width={40}
+          height={40}
+          className="rounded-full w-10 h-10 md:hidden xl:block"
+        />
+        <div className="flex flex-col gap-2 font-semibold">
+          <h1 className="text-lg font-semibold">{item.name}</h1>
+          <p className="text-xs text-gray-500">{item?.email}</p>
+        </div>
+      </td>
+      <td className="hidden md:table-cell">{item.teacherId}</td>
+
+      <td className="hidden md:table-cell">{item.subjects.join(", ")}</td>
+      <td className="hidden md:table-cell">{item.classes.join(", ")}</td>
+      <td className="hidden md:table-cell">{item.phone}</td>
+      <td className="hidden md:table-cell">{item.address}</td>
+      <td>
+        <div className="flex gap-2">
+          <Link href={`/list/teachers/${item.id}`}>
+            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-outSky text-white">
+              <Image src="/view.png" alt="edit" width={16} height={16} />
+            </button>
+          </Link>
+          {role === "teacher" && <button className="w-7 h-7 flex items-center justify-center rounded-full bg-outPurple text-white">
+              <Image src="/delete.png" alt="edit" width={16} height={16} />
+            </button>}
+        </div>
+      </td>
+    </tr>
+  );
   return (
     <div className="bg-white rounded-xl p-4 m-4 flex-1">
       {/* TOP */}
@@ -48,22 +98,22 @@ const TeacherList = () => {
               <Image src="/filter.svg" alt="search" width={14} height={14} />
             </button>
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-outSky text-white">
-              <Image src="/sort.svg" alt="search" width={14} height={14} />
+              <Image src="/sort.svg" alt="search" width={16} height={16} />
             </button>
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-outSky text-white">
-              <Image src="/plus.svg" alt="search" width={14} height={14} />
+              <Image src="/plus.svg" alt="search" width={16} height={16} />
             </button>
           </div>
         </div>
       </div>
 
       {/* LIST */}
-      <Table columns={columns} />
+      <Table columns={columns } renderRow={renderRow} data={teachersData} />
 
       {/* PAGINATION */}
       <Pagination />
     </div>
   );
-};
 
+};
 export default TeacherList;

@@ -3,11 +3,19 @@ type column = {
   accessor: string;
   className?: string;
 };
-const Table = ({ columns }: { columns: column[] }) => {
+const Table = ({
+  renderRow,
+  data,
+  columns,
+}: {
+  columns: column[];
+  data: any[];
+  renderRow: (item: any) => React.ReactNode;
+}) => {
   return (
     <table className="w-full mt-4">
       <thead>
-        <tr>
+        <tr className="text-sm text-left font-medium text-gray-600">
           {columns.map((col) => (
             <th key={col.accessor} className={col.className}>
               {col.header}
@@ -15,6 +23,7 @@ const Table = ({ columns }: { columns: column[] }) => {
           ))}
         </tr>
       </thead>
+      <tbody>{data.map(renderRow)}</tbody>
     </table>
   );
 };
