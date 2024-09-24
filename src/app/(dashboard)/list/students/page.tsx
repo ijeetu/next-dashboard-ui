@@ -68,11 +68,12 @@ const StudentList = () => {
         />
         <div className="flex flex-col gap-2 font-semibold">
           <h1 className="text-lg font-semibold">{item.name}</h1>
-          <p className="text-xs text-gray-500">{item?.class}</p>
+          <p className="text-xs text-gray-500">{item?.email}</p>
         </div>
       </td>
 
       <td className="hidden md:table-cell">{item.studentId}</td>
+      <td className="hidden md:table-cell">{item.class}</td>
       <td className="hidden md:table-cell">{item.grade}</td>
       <td className="hidden md:table-cell">{item.phone}</td>
       <td className="hidden md:table-cell">{item.address}</td>
