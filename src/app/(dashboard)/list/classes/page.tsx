@@ -17,7 +17,7 @@ type Class = {
 
 const columns = [
   {
-    header: "Subject Names",
+    header: "Class Names",
     accessor: "name",
   },
   {
@@ -26,12 +26,12 @@ const columns = [
   },
   {
     header:"Grade",
-    accesor:"grade",
+    accessor:"grade",
     className: "hidden md:table-cell",
   },
   {
     header:"Supervisor",
-    accesor:"supervisor",
+    accessor:"supervisor",
     className: "hidden md:table-cell",
   },
   {
